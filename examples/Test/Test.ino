@@ -7,11 +7,8 @@ void setup()
 {
   Serial.begin(9600);
   
-  // Make sure I2C is properly setup
-  Wire.begin();
-
   // Try to initialise and warn if we couldn't detect the chip
-  if (!lsm.init())
+  if (!lsm.begin())
   {
     Serial.println("Oops ... unable to initialize the LSM303. Check your wiring!");
     while (1);
