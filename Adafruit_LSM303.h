@@ -108,16 +108,17 @@ class Adafruit_LSM303
 	  float orientation;
 	} lsm303MagData;
 
-    bool init(void);
+    bool begin(void);
     void read(void);
 	void setMagGain(lsm303MagGain gain);
 
     lsm303AccelData accelData;    // Last read accelerometer data will be available here
     lsm303MagData magData;        // Last read magnetometer data will be available here
 
-  private:
     void write8(byte address, byte reg, byte value);
     byte read8(byte address, byte reg);
+
+  private:
 };
 
 #endif
