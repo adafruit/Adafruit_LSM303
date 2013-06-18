@@ -115,7 +115,7 @@ class Adafruit_LSM303
     lsm303AccelData accelData;    // Last read accelerometer data will be available here
     lsm303MagData magData;        // Last read magnetometer data will be available here
 
-    void write8(byte address, byte reg, byte value);
+    byte write8(byte address, byte reg, byte value);
     byte read8(byte address, byte reg);
 
   private:
