@@ -23,10 +23,12 @@ bool Adafruit_LSM303::begin()
 Serial.println("Wire");
 
   // Enable the accelerometer
-  write8(LSM303_ADDRESS_ACCEL, LSM303_REGISTER_ACCEL_CTRL_REG1_A, 0x27);
+  if (!write8(LSM303_ADDRESS_ACCEL, LSM303_REGISTER_ACCEL_CTRL_REG1_A, 0x27))
+    return false;
   
   // Enable the magnetometer
-  write8(LSM303_ADDRESS_MAG, LSM303_REGISTER_MAG_MR_REG_M, 0x00);
+  if (!write8(LSM303_ADDRESS_MAG, LSM303_REGISTER_MAG_MR_REG_M, 0x00))
+    return false;
 
   return true;
 }
@@ -91,12 +93,12 @@ void Adafruit_LSM303::setMagGain(lsm303MagGain gain)
 /***************************************************************************
  PRIVATE FUNCTIONS
  ***************************************************************************/
-void Adafruit_LSM303::write8(byte address, byte reg, byte value)
+byte Adafruit_LSM303::write8(byte address, byte reg, byte value)
 {
   Wire.beginTransmission(address);
   Wire.write(reg);
   Wire.write(value);
-  Wire.endTransmission();
+  return Wire.endTransmission();
 }
 
 byte Adafruit_LSM303::read8(byte address, byte reg)
