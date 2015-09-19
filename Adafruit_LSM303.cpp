@@ -20,7 +20,6 @@
 bool Adafruit_LSM303::begin()
 {
   Wire.begin();
-Serial.println("Wire");
 
   // Enable the accelerometer
   write8(LSM303_ADDRESS_ACCEL, LSM303_REGISTER_ACCEL_CTRL_REG1_A, 0x27);
