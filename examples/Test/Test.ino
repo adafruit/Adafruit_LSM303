@@ -6,6 +6,9 @@ Adafruit_LSM303 lsm;
 
 void setup() 
 {
+#ifndef ESP8266
+  while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
+#endif
   Serial.begin(9600);
   
   // Try to initialise and warn if we couldn't detect the chip
