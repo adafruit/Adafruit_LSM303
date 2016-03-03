@@ -4,11 +4,6 @@
 
 Adafruit_LSM303 lsm;
 
-#if defined(ARDUINO_ARCH_SAMD)
-// for Zero, output on USB Serial console, remove line below if using programming port to program the Zero!
-   #define Serial SerialUSB
-#endif
-
 void setup() 
 {
 #ifndef ESP8266
