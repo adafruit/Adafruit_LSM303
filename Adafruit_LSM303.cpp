@@ -52,9 +52,13 @@ void Adafruit_LSM303::read()
   uint8_t zhi = Wire.read();
 
   // Shift values to create properly formed integer (low byte first)
-  accelData.x = (xlo | (xhi << 8)) >> 4;
-  accelData.y = (ylo | (yhi << 8)) >> 4;
-  accelData.z = (zlo | (zhi << 8)) >> 4;
+  // KTOWN: 12-bit values are left-aligned, no shift needed
+  // accelData.x = (xlo | (xhi << 8)) >> 4;
+  // accelData.y = (ylo | (yhi << 8)) >> 4;
+  // accelData.z = (zlo | (zhi << 8)) >> 4;
+  accelData.x = (int16_t)((xhi << 8) | xlo);
+  accelData.y = (int16_t)((yhi << 8) | ylo);
+  accelData.z = (int16_t)((zhi << 8) | zlo);
   
   // Read the magnetometer
   Wire.beginTransmission((byte)LSM303_ADDRESS_MAG);
