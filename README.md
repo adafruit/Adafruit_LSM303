@@ -1,3 +1,8 @@
+# Warning: Library Deprecated
+
+This library is deprecated, and as of 14 October 2016 this library will no longer appear
+in the Arduino Library Manager. Any new projects should use the newer library available here: https://github.com/adafruit/Adafruit_LSM303DLHC
+
 Adafruit_LSM303
 ===============
 
